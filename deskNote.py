@@ -2,6 +2,7 @@
 
 import time
 import shutil
+import getpass
 
 def main():
     # Get input from console
@@ -11,14 +12,20 @@ def main():
     currentTime = time.localtime()
     filename = time.strftime('%a_%d_%b_%Y_%H-%M-%S', currentTime) + '.txt'
 
-    # Write to file, move to desktop
+    # Write to file
     with open(filename, 'w') as f:
         f.write(note)
-    shutil.move('./' + filename, 'C:/Users/austi/Desktop/' + filename)
+
+    # Detect username
+    username = getpass.getuser()
+
+    # Move file to desktop
+    targetPath = 'C:/Users/' + username + '/Desktop/' + filename
+    shutil.move('./' + filename, targetPath)
 
     # Clean up and user communication
     f.close()
-    print(filename + ' saved to the desktop.')
+    print('Saved note to ' + targetPath)
 
 if __name__ == "__main__":
     main()
