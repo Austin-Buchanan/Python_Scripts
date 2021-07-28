@@ -34,7 +34,7 @@ def main():
                     print(tasklookup)
         sock.close()
 
-    input('Press any key to continue...')
+    input('Press enter to continue...')
 
 if __name__ == "__main__":
     main()

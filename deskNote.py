@@ -29,7 +29,7 @@ def main():
     # Clean up and user communication
     f.close()
     print('Saved note to ' + targetPath)
-    input('Press any key to continue...')
+    input('Press enter to continue...')
 
 if __name__ == "__main__":  
     main()
