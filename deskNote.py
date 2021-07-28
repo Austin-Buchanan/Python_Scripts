@@ -3,6 +3,7 @@
 import time
 import shutil
 import getpass
+import os
 
 def main():
     # Get input from console
@@ -16,16 +17,19 @@ def main():
     with open(filename, 'w') as f:
         f.write(note)
 
-    # Detect username
+    # Detect username and current path
     username = getpass.getuser()
+    currentPath = os.getcwd() + '/' + filename
+    print(currentPath)
 
     # Move file to desktop
     targetPath = 'C:/Users/' + username + '/Desktop/' + filename
-    shutil.move('./' + filename, targetPath)
+    shutil.move(currentPath, targetPath)
 
     # Clean up and user communication
     f.close()
     print('Saved note to ' + targetPath)
+    input('Press any key to continue...')
 
-if __name__ == "__main__":
+if __name__ == "__main__":  
     main()
